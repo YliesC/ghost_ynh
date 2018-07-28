@@ -82,6 +82,9 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 ynh_package_update
 
+n 8.9.0
+ln -sf /opt/node_n/n/versions/node/8.9.0/bin/node /usr/local/bin/node
+
 ynh_install_app_dependencies mailutils yarn
 
 
@@ -153,8 +156,7 @@ ynh_replace_string "__PORT__"   "$port"        "$final_path/config.production.js
 # Create tables in database
 (
 	cd "$final_path"
-NODE_ENV=production knex-migrator init
-
+	NODE_ENV=production knex-migrator init
 )
 
 #=================================================
