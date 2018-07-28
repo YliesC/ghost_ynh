@@ -156,7 +156,7 @@ ynh_replace_string "__PORT__"   "$port"        "$final_path/config.production.js
 # Create tables in database
 (
 	cd "$final_path"
-	NODE_ENV=production knex-migrator init
+	NODE_ENV=production yarn knex-migrator init
 )
 
 #=================================================
